@@ -2,8 +2,40 @@ import 'package:flutter/material.dart';
 
 void main() {
   // 1
-  runApp(const FlutterBasicWidgets());
+  runApp(MyFirstWidget());
 }
+
+class MyFirstWidgetState extends State<MyFirstWidget> {
+  var toDisplay = 0;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+            centerTitle: true,
+            title: Text("Counter")),
+        body: Container(
+          child: Center(child: Text(toDisplay.toString(),
+            style: TextStyle(fontSize: 50),),) ,
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              toDisplay = toDisplay + 1;
+            });
+          },
+          child: Text("add"),
+        ),
+      ),
+    );
+  }
+}
+class MyFirstWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => MyFirstWidgetState();
+}
+
+
 
 class FlutterBasicWidgets extends StatelessWidget {
   // 2
